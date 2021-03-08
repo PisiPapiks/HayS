@@ -28,7 +28,7 @@ elseif game.PlaceId == 301549746 then
 	})
 	wait(2)
 	loadstring(game:HttpGet('https://raw.githubusercontent.com/NecessaryPaint/ur-mom/master/CBRO_Modded_Weapons.lua', true))()
-elseif game.PlaceId == 286090429 then
+elseif game.PlaceId == 3101667897 then
 	game.StarterGui:SetCore("SendNotification", {
 		Title = "HAY";
 		Text = "Game Detected:\n" .. gnID.Name;
@@ -36,88 +36,6 @@ elseif game.PlaceId == 286090429 then
 		Duration = 3;
 	})
 	wait(2)
-	--I dont own the script]]
-
-	repeat wait() until game:IsLoaded()
-
-	local Players = game:GetService("Players")
-	local UserInputService = game:GetService("UserInputService")
-	local plr = Players.LocalPlayer
-	local size = 5 --change size of hitbox
-	local key = "c" -- change key to what you want (https://developer.roblox.com/en-us/api-reference/enum/KeyCode)
-	local bighead = true -- This changes if you want the head hitbox or not (If you record arsenal gameplay set the size to 3 because the head hitbox is invisible)
-	local isVisible = true -- change this if u want to see head hit box
-	local toggle = true
-	key = key:sub(1, 1):upper()..key:sub(2, #key)
-
-	if isVisible then
-		isVisible = 0
-	else
-		isVisible = 1
-	end
-
-	UserInputService.InputEnded:Connect(function(input)
-		if UserInputService:GetFocusedTextBox() then return end
-		if input.UserInputType == Enum.UserInputType.Keyboard and input.KeyCode == Enum.KeyCode[key] then
-			toggle = not toggle
-			for _,v in pairs(game.Players:GetPlayers()) do
-				if v ~= game.Players.LocalPlayer then
-					update(v)
-				end
-			end
-		end
-	end)
-
-	originalSizes = {LowerTorso=plr.Character.LowerTorso.Size,HumanoidRootPart=plr.Character.HumanoidRootPart.Size,HeadHB=plr.Character.HeadHB.Size}
-
-	function update(player)
-		if not player or not player.Character then return end
-		if toggle and player ~= plr and player.Status.Team.Value ~= plr.Status.Team.Value then
-			if bighead ~= true then
-				player.Character.LowerTorso.Size = Vector3.new(size,size,size)
-				player.Character.LowerTorso.Transparency = isVisible
-			else
-				player.Character.HeadHB.Size = Vector3.new(size,size,size)
-				player.Character.HeadHB.Transparency = isVisible
-			end
-			player.Character.HumanoidRootPart.Size = Vector3.new(size,size,size)
-			player.Character.HumanoidRootPart.Transparency = isVisible
-		else
-			player.Character.HeadHB.Transparency = 1
-			player.Character.LowerTorso.Size = originalSizes.LowerTorso
-			player.Character.HumanoidRootPart.Size = originalSizes.HumanoidRootPart
-			player.Character.HeadHB.Size = originalSizes.HeadHB
-		end
-	end
-
-	function onjoin(player)
-		if player then player = game.Players[player.Name] else return end
-		player.Status.Team:GetPropertyChangedSignal("Value"):Connect(function()
-			update(player)
-		end)
-		update(player)
-	end
-
-	game.Players.PlayerAdded:Connect(function(player)
-		player.CharacterAdded:Connect(onjoin)
-	end)
-
-	for _,v in pairs(Players:GetPlayers()) do
-		v.Status.Team:GetPropertyChangedSignal("Value"):Connect(function()
-			if v == game.Players.LocalPlayer then
-				for _,b in pairs(Players:GetPlayers()) do
-					if b ~= game.Players.LocalPlayer then
-						update(b)
-					end
-				end
-			else
-				update(v)
-			end
-		end)
-		if v ~= game.Players.LocalPlayer then
-			update(v)
-		end
-	end
 	while wait(0.1) do
 		local A_1 = "collectOrb" local A_2 = "Gem" local A_3 = "City" local Event = game:GetService("ReplicatedStorage").rEvents.orbEvent Event:FireServer(A_1, A_2, A_3) local A_1 = "collectOrb" local A_2 = "Yellow Orb" local A_3 = "City" local Event = game:GetService("ReplicatedStorage").rEvents.orbEvent Event:FireServer(A_1, A_2, A_3) local A_1 = "collectOrb" local A_2 = "Orange Orb" local A_3 = "City" local Event = game:GetService("ReplicatedStorage").rEvents.orbEvent Event:FireServer(A_1, A_2, A_3) local A_1 = "collectOrb" local A_2 = "Blue Orb" local A_3 = "City" local Event = game:GetService("ReplicatedStorage").rEvents.orbEvent Event:FireServer(A_1, A_2, A_3) local A_1 = "collectOrb" local A_2 = "Gem" local A_3 = "City" local Event = game:GetService("ReplicatedStorage").rEvents.orbEvent Event:FireServer(A_1, A_2, A_3) local A_1 = "collectOrb" local A_2 = "Yellow Orb" local A_3 = "City" local Event = game:GetService("ReplicatedStorage").rEvents.orbEvent Event:FireServer(A_1, A_2, A_3) local A_1 = "collectOrb" local A_2 = "Orange Orb" local A_3 = "City" local Event = game:GetService("ReplicatedStorage").rEvents.orbEvent Event:FireServer(A_1, A_2, A_3) local A_1 = "collectOrb" local A_2 = "Blue Orb" local A_3 = "City" local Event = game:GetService("ReplicatedStorage").rEvents.orbEvent Event:FireServer(A_1, A_2, A_3) local A_1 = "collectOrb" local A_2 = "Gem" local A_3 = "City" local Event = game:GetService("ReplicatedStorage").rEvents.orbEvent Event:FireServer(A_1, A_2, A_3) local A_1 = "collectOrb" local A_2 = "Yellow Orb" local A_3 = "City" local Event = game:GetService("ReplicatedStorage").rEvents.orbEvent Event:FireServer(A_1, A_2, A_3) local A_1 = "collectOrb" local A_2 = "Orange Orb" local A_3 = "City" local Event = game:GetService("ReplicatedStorage").rEvents.orbEvent Event:FireServer(A_1, A_2, A_3) local A_1 = "collectOrb" local A_2 = "Blue Orb" local A_3 = "City" local Event = game:GetService("ReplicatedStorage").rEvents.orbEvent Event:FireServer(A_1, A_2, A_3) local A_1 = "collectOrb" local A_2 = "Gem" local A_3 = "City" local Event = game:GetService("ReplicatedStorage").rEvents.orbEvent Event:FireServer(A_1, A_2, A_3) local A_1 = "collectOrb" local A_2 = "Yellow Orb" local A_3 = "City" local Event = game:GetService("ReplicatedStorage").rEvents.orbEvent Event:FireServer(A_1, A_2, A_3) local A_1 = "collectOrb" local A_2 = "Orange Orb" local A_3 = "City" local Event = game:GetService("ReplicatedStorage").rEvents.orbEvent Event:FireServer(A_1, A_2, A_3) local A_1 = "collectOrb" local A_2 = "Blue Orb" local A_3 = "City" local Event = game:GetService("ReplicatedStorage").rEvents.orbEvent Event:FireServer(A_1, A_2, A_3) local A_1 = "collectOrb" local A_2 = "Gem" local A_3 = "City" local Event = game:GetService("ReplicatedStorage").rEvents.orbEvent Event:FireServer(A_1, A_2, A_3) local A_1 = "collectOrb" local A_2 = "Yellow Orb" local A_3 = "City" local Event = game:GetService("ReplicatedStorage").rEvents.orbEvent Event:FireServer(A_1, A_2, A_3) local A_1 = "collectOrb" local A_2 = "Orange Orb" local A_3 = "City" local Event = game:GetService("ReplicatedStorage").rEvents.orbEvent Event:FireServer(A_1, A_2, A_3) local A_1 = "collectOrb" local A_2 = "Blue Orb" local A_3 = "City" local Event = game:GetService("ReplicatedStorage").rEvents.orbEvent Event:FireServer(A_1, A_2, A_3) local A_1 = "collectOrb" local A_2 = "Gem" local A_3 = "City" local Event = game:GetService("ReplicatedStorage").rEvents.orbEvent Event:FireServer(A_1, A_2, A_3) local A_1 = "collectOrb" local A_2 = "Yellow Orb" local A_3 = "City" local Event = game:GetService("ReplicatedStorage").rEvents.orbEvent Event:FireServer(A_1, A_2, A_3) local A_1 = "collectOrb" local A_2 = "Orange Orb" local A_3 = "City" local Event = game:GetService("ReplicatedStorage").rEvents.orbEvent Event:FireServer(A_1, A_2, A_3) local A_1 = "collectOrb" local A_2 = "Blue Orb" local A_3 = "City" local Event = game:GetService("ReplicatedStorage").rEvents.orbEvent Event:FireServer(A_1, A_2, A_3) local A_1 = "collectOrb" local A_2 = "Gem" local A_3 = "City" local Event = game:GetService("ReplicatedStorage").rEvents.orbEvent Event:FireServer(A_1, A_2, A_3) local A_1 = "collectOrb" local A_2 = "Yellow Orb" local A_3 = "City" local Event = game:GetService("ReplicatedStorage").rEvents.orbEvent Event:FireServer(A_1, A_2, A_3) local A_1 = "collectOrb" local A_2 = "Orange Orb" local A_3 = "City" local Event = game:GetService("ReplicatedStorage").rEvents.orbEvent Event:FireServer(A_1, A_2, A_3) local A_1 = "collectOrb" local A_2 = "Blue Orb" local A_3 = "City" local Event = game:GetService("ReplicatedStorage").rEvents.orbEvent Event:FireServer(A_1, A_2, A_3) local A_1 = "collectOrb" local A_2 = "Gem" local A_3 = "City" local Event = game:GetService("ReplicatedStorage").rEvents.orbEvent Event:FireServer(A_1, A_2, A_3) local A_1 = "collectOrb" local A_2 = "Yellow Orb" local A_3 = "City" local Event = game:GetService("ReplicatedStorage").rEvents.orbEvent Event:FireServer(A_1, A_2, A_3) local A_1 = "collectOrb" local A_2 = "Orange Orb" local A_3 = "City" local Event = game:GetService("ReplicatedStorage").rEvents.orbEvent Event:FireServer(A_1, A_2, A_3) local A_1 = "collectOrb" local A_2 = "Blue Orb" local A_3 = "City" local Event = game:GetService("ReplicatedStorage").rEvents.orbEvent Event:FireServer(A_1, A_2, A_3) local A_1 = "collectOrb" local A_2 = "Gem" local A_3 = "City" local Event = game:GetService("ReplicatedStorage").rEvents.orbEvent Event:FireServer(A_1, A_2, A_3) local A_1 = "collectOrb" local A_2 = "Yellow Orb" local A_3 = "City" local Event = game:GetService("ReplicatedStorage").rEvents.orbEvent Event:FireServer(A_1, A_2, A_3) local A_1 = "collectOrb" local A_2 = "Orange Orb" local A_3 = "City" local Event = game:GetService("ReplicatedStorage").rEvents.orbEvent Event:FireServer(A_1, A_2, A_3) local A_1 = "collectOrb" local A_2 = "Blue Orb" local A_3 = "City" local Event = game:GetService("ReplicatedStorage").rEvents.orbEvent Event:FireServer(A_1, A_2, A_3)
 	end
@@ -408,47 +326,47 @@ elseif game.PlaceId == 286090429 then
 		Duration = 3;
 	})
 	wait(2)
-	game.StarterGui:SetCore("SendNotification", {
-		Title = "HAY";
-		Text = "Press E to loop kill all";
-		Icon = "http://www.roblox.com/asset/?id=6456735913";
-		Duration = 3;
-	})
-game.Players.LocalPlayer:GetMouse().KeyDown:Connect(function(k)
-if k == "e" then
-while wait() do
-local Gun = game.ReplicatedStorage.Weapons:FindFirstChild(game.Players.LocalPlayer.NRPBS.EquippedTool.Value);
-local Crit = math.random() > .6 and true or false;
-for i,v in pairs(game.Players:GetPlayers()) do
-if v and v.Character and v.Character:FindFirstChild("Head") then
-local Distance = (game.Players.LocalPlayer.Character.Head.Position - v.Character.Head.Position).magnitude
-for i  = 1,10 do
-game.ReplicatedStorage.Events.HitPart:FireServer(v.Character.Head,
-v.Character.Head.Position + Vector3.new(math.random(), math.random(), math.random()),
-Gun.Name,
-Crit and 2 or 1,
-Distance,
-Backstab,
-Crit,
-false,
-1,
-false,
-Gun.FireRate.Value,
-Gun.ReloadTime.Value,
-Gun.Ammo.Value,
-Gun.StoredAmmo.Value,
-Gun.Bullets.Value,
-Gun.EquipTime.Value,
-Gun.RecoilControl.Value,
-Gun.Auto.Value,
-Gun['Speed%'].Value,
-game.ReplicatedStorage.wkspc.DistributedTime.Value);
-end
-end
-end
-end
-end
-end)
+	game.Players.LocalPlayer:GetMouse().KeyDown:Connect(function(k)
+		game.StarterGui:SetCore("SendNotification", {
+			Title = "HAY";
+			Text = "Press E To Loop Kill All";
+			Icon = "http://www.roblox.com/asset/?id=6456735913";
+			Duration = 3;
+		})
+		if k == "e" then
+			while wait(0.5) do
+				local Gun = game.ReplicatedStorage.Weapons:FindFirstChild(game.Players.LocalPlayer.NRPBS.EquippedTool.Value);
+				local Crit = math.random() > .6 and true or false;
+				for i,v in pairs(game.Players:GetPlayers()) do
+					if v and v.Character and v.Character:FindFirstChild("Head") then
+						local Distance = (game.Players.LocalPlayer.Character.Head.Position - v.Character.Head.Position).magnitude
+						for i  = 1,10 do
+							game.ReplicatedStorage.Events.HitPart:FireServer(v.Character.Head,
+								v.Character.Head.Position + Vector3.new(math.random(), math.random(), math.random()),
+								Gun.Name,
+								Crit and 2 or 1,
+								Distance,
+								Backstab,
+								Crit,
+								false,
+								1,
+								false,
+								Gun.FireRate.Value,
+								Gun.ReloadTime.Value,
+								Gun.Ammo.Value,
+								Gun.StoredAmmo.Value,
+								Gun.Bullets.Value,
+								Gun.EquipTime.Value,
+								Gun.RecoilControl.Value,
+								Gun.Auto.Value,
+								Gun['Speed%'].Value,
+								game.ReplicatedStorage.wkspc.DistributedTime.Value);
+						end
+					end
+				end
+			end
+		end
+	end)
 else
 	game.StarterGui:SetCore("SendNotification", {
 		Title = "HAY";
