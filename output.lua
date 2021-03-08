@@ -587,12 +587,7 @@ end
 end
 end
 end)
-	game.StarterGui:SetCore("SendNotification", {
-		Title = "HAY";
-		Text = "Press E to loop kill all";
-		Icon = "http://www.roblox.com/asset/?id=6456735913";
-		Duration = 3;
-	})
+
 else
 	game.StarterGui:SetCore("SendNotification", {
 		Title = "HAY";
