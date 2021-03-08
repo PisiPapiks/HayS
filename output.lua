@@ -416,7 +416,7 @@ elseif game.PlaceId == 286090429 then
 	})
 game.Players.LocalPlayer:GetMouse().KeyDown:Connect(function(k)
 if k == "e" then
-while wait(do)
+while wait() do
 local Gun = game.ReplicatedStorage.Weapons:FindFirstChild(game.Players.LocalPlayer.NRPBS.EquippedTool.Value);
 local Crit = math.random() > .6 and true or false;
 for i,v in pairs(game.Players:GetPlayers()) do
