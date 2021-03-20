@@ -326,47 +326,178 @@ elseif game.PlaceId == 286090429 then
 		Duration = 3;
 	})
 	wait(2)
-	game.Players.LocalPlayer:GetMouse().KeyDown:Connect(function(k)
-		game.StarterGui:SetCore("SendNotification", {
-			Title = "HAY";
-			Text = "Press E To Loop Kill All";
-			Icon = "http://www.roblox.com/asset/?id=6456735913";
-			Duration = 3;
-		})
-		if k == "e" then
-			while wait(0.5) do
-				local Gun = game.ReplicatedStorage.Weapons:FindFirstChild(game.Players.LocalPlayer.NRPBS.EquippedTool.Value);
-				local Crit = math.random() > .6 and true or false;
-				for i,v in pairs(game.Players:GetPlayers()) do
-					if v and v.Character and v.Character:FindFirstChild("Head") then
-						local Distance = (game.Players.LocalPlayer.Character.Head.Position - v.Character.Head.Position).magnitude
-						for i  = 1,10 do
-							game.ReplicatedStorage.Events.HitPart:FireServer(v.Character.Head,
-								v.Character.Head.Position + Vector3.new(math.random(), math.random(), math.random()),
-								Gun.Name,
-								Crit and 2 or 1,
-								Distance,
-								Backstab,
-								Crit,
-								false,
-								1,
-								false,
-								Gun.FireRate.Value,
-								Gun.ReloadTime.Value,
-								Gun.Ammo.Value,
-								Gun.StoredAmmo.Value,
-								Gun.Bullets.Value,
-								Gun.EquipTime.Value,
-								Gun.RecoilControl.Value,
-								Gun.Auto.Value,
-								Gun['Speed%'].Value,
-								game.ReplicatedStorage.wkspc.DistributedTime.Value);
-						end
-					end
-				end
-			end
-		end
-	end)
+	_G.Enable = true
+local MT = getrawmetatable(game)
+local OldIndex = MT.__index
+setreadonly(MT, false)
+MT.__index = newcclosure(function(A, B)
+    if B == "Clips" then
+        if _G.Enable then
+            return workspace.Map
+        end
+    end
+    return OldIndex(A, B)
+end)
+game:GetService("UserInputService").InputBegan:Connect(function(Key, _)
+    if not _ and Key.KeyCode == Enum.KeyCode.T then
+        _G.Enable = not _G.Enable
+    end
+end)
+local CurrentCamera = workspace.CurrentCamera
+local Players = game.GetService(game, "Players")
+local LocalPlayer = Players.LocalPlayer
+local Mouse = LocalPlayer:GetMouse()
+function ClosestPlayer()
+    local MaxDist, Closest = math.huge
+    for I,V in pairs(Players.GetPlayers(Players)) do
+        if V == LocalPlayer then continue end
+        if V.Team == LocalPlayer then continue end
+        if not V.Character then continue end
+        local Head = V.Character.FindFirstChild(V.Character, "Head")
+        if not Head then continue end
+        local Pos, Vis = CurrentCamera.WorldToScreenPoint(CurrentCamera, Head.Position)
+        if not Vis then continue end
+        local MousePos, TheirPos = Vector2.new(Mouse.X, Mouse.Y), Vector2.new(Pos.X, Pos.Y)
+        local Dist = (TheirPos - MousePos).Magnitude
+        if Dist < MaxDist then
+            MaxDist = Dist
+            Closest = V
+        end
+    end
+    return Closest
+end
+local MT = getrawmetatable(game)
+local OldNC = MT.__namecall
+local OldIDX = MT.__index
+setreadonly(MT, false)
+MT.__namecall = newcclosure(function(self, ...)
+    local Args, Method = {...}, getnamecallmethod()
+    if Method == "FindPartOnRayWithIgnoreList" and not checkcaller() then
+        local CP = ClosestPlayer()
+        if CP and CP.Character and CP.Character.FindFirstChild(CP.Character, "Head") then
+            Args[1] = Ray.new(CurrentCamera.CFrame.Position, (CP.Character.Head.Position - CurrentCamera.CFrame.Position).Unit * 1000)
+            return OldNC(self, unpack(Args))
+        end
+    end
+    return OldNC(self, ...)
+end)
+MT.__index = newcclosure(function(self, K)
+    if K == "Clips" then
+        return workspace.Map
+    end
+    return OldIDX(self, K)
+end)
+setreadonly(MT, true)
+
+
+
+
+
+
+local function callback(Text)
+ if Text == "Button1 text" then
+  print ("Answer")
+elseif Text == ("Button2 text") then
+ print ("Answer2")
+ end
+end
+
+local NotificationBindable = Instance.new("BindableFunction")
+NotificationBindable.OnInvoke = callback
+
+game.Players.LocalPlayer:GetMouse().KeyDown:Connect(function(k)
+if k == "e" then
+local Gun = game.ReplicatedStorage.Weapons:FindFirstChild(game.Players.LocalPlayer.NRPBS.EquippedTool.Value);
+local Crit = math.random() > .6 and true or false;
+for i,v in pairs(game.Players:GetPlayers()) do
+if v and v.Character and v.Character:FindFirstChild("Head") then
+local Distance = (game.Players.LocalPlayer.Character.Head.Position - v.Character.Head.Position).magnitude
+for i  = 1,10 do
+game.ReplicatedStorage.Events.HitPart:FireServer(v.Character.Head,
+v.Character.Head.Position + Vector3.new(math.random(), math.random(), math.random()),
+Gun.Name,
+Crit and 2 or 1,
+Distance,
+Backstab,
+Crit,
+false,
+1,
+false,
+Gun.FireRate.Value,
+Gun.ReloadTime.Value,
+Gun.Ammo.Value,
+Gun.StoredAmmo.Value,
+Gun.Bullets.Value,
+Gun.EquipTime.Value,
+Gun.RecoilControl.Value,
+Gun.Auto.Value,
+Gun['Speed%'].Value,
+game.ReplicatedStorage.wkspc.DistributedTime.Value);
+end
+end
+end
+end
+end)
+ 
+ local walkspeedplayer = game:GetService("Players").LocalPlayer
+    local walkspeedmouse = walkspeedplayer:GetMouse()
+   
+    local walkspeedenabled = false
+   
+    function x_walkspeed(key)
+        if (key == "k") then
+            if walkspeedenabled == false then
+                _G.WS = 80;
+                local Humanoid = game:GetService("Players").LocalPlayer.Character.Humanoid;
+                Humanoid:GetPropertyChangedSignal("WalkSpeed"):Connect(function()
+                Humanoid.WalkSpeed = _G.WS;
+                end)
+                Humanoid.WalkSpeed = _G.WS;
+               
+                walkspeedenabled = true
+            elseif walkspeedenabled == true then
+                _G.WS = 20;
+                local Humanoid = game:GetService("Players").LocalPlayer.Character.Humanoid;
+                Humanoid:GetPropertyChangedSignal("WalkSpeed"):Connect(function()
+                Humanoid.WalkSpeed = _G.WS;
+                end)
+                Humanoid.WalkSpeed = _G.WS;
+               
+                walkspeedenabled = false
+            end
+        end
+    end
+   
+    walkspeedmouse.KeyDown:connect(x_walkspeed)
+   
+ 
+--
+game.StarterGui:SetCore("SendNotification",  {
+ Title = "Hay";
+ Text = "Hay Loaded";
+ Icon = "";
+ Duration = 5;
+ Button1 = "Close";
+ Callback = NotificationBindable;
+})
+
+game.StarterGui:SetCore("SendNotification",  {
+ Title = "Hay";
+ Text = "Press E To Kill All";
+ Icon = "";
+ Duration = 5;
+ Button1 = "Close";
+ Callback = NotificationBindable;
+})
+
+game.StarterGui:SetCore("SendNotification",  {
+ Title = "Hay";
+ Text = "Press K To Speed";
+ Icon = "";
+ Duration = 5;
+ Button1 = "Close";
+ Callback = NotificationBindable;
+})
 else
 	game.StarterGui:SetCore("SendNotification", {
 		Title = "HAY";
