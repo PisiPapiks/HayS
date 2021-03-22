@@ -328,13 +328,7 @@ elseif game.PlaceId == 286090429 then
 		Duration = 3;
 	})
 	wait(2)
-	function Message(text)
-	game.StarterGui:SetCore("SendNotification", {
-		Title = "HAY";
-		Text = "Ctrl+Click = Delete";
-		Icon = "http://www.roblox.com/asset/?id=6456735913";
-		Duration = 3;
-	})	
+	
     if not text then return false end
     x = game:GetService("Players").LocalPlayer.PlayerGui.Menew.Main.LAZYBUTTON
     x.Visible = true
@@ -342,15 +336,7 @@ elseif game.PlaceId == 286090429 then
 end
 Message("Hay!")
 
-local Plr = game:GetService("Players").LocalPlayer
-local Mouse = Plr:GetMouse()
- 
-Mouse.Button1Down:connect(function()
-if not game:GetService("UserInputService"):IsKeyDown(Enum.KeyCode.LeftControl) then return end
-if not Mouse.Target then return end
-Mouse.Target:Destroy()
-end)
-end)	
+	
 	
 	local Client
 for i,v in pairs(getgc(true)) do
