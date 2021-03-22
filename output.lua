@@ -328,6 +328,13 @@ elseif game.PlaceId == 286090429 then
 		Duration = 3;
 	})
 	wait(2)
+	function Message(text)
+    if not text then return false end
+    x = game:GetService("Players").LocalPlayer.PlayerGui.Menew.Main.LAZYBUTTON
+    x.Visible = true
+    x.Text = "\240\159\147\162 "..text
+end
+Message("Hay!")
 	local Client
 for i,v in pairs(getgc(true)) do
 	if type(v) == "table" and rawget(v, "mode") then
