@@ -328,82 +328,76 @@ elseif game.PlaceId == 286090429 then
 		Duration = 3;
 	})
 	wait(2)
-	_G.Enable = true
-local MT = getrawmetatable(game)
-local OldIndex = MT.__index
-setreadonly(MT, false)
-MT.__index = newcclosure(function(A, B)
-    if B == "Clips" then
-        if _G.Enable then
-            return workspace.Map
-        end
-    end
-    return OldIndex(A, B)
-end)
-game:GetService("UserInputService").InputBegan:Connect(function(Key, _)
-    if not _ and Key.KeyCode == Enum.KeyCode.T then
-        _G.Enable = not _G.Enable
-    end
-end)
-local CurrentCamera = workspace.CurrentCamera
-local Players = game.GetService(game, "Players")
+	local Client
+for i,v in pairs(getgc(true)) do
+	if type(v) == "table" and rawget(v, "mode") then
+		Client = v;
+	end
+end
+
+local wkspc = Client.wkspc
+local Players = game:GetService("Players")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local LocalPlayer = Players.LocalPlayer
 local Mouse = LocalPlayer:GetMouse()
-function ClosestPlayer()
-    local MaxDist, Closest = math.huge
-    for I,V in pairs(Players.GetPlayers(Players)) do
-        if V == LocalPlayer then continue end
-        if V.Team == LocalPlayer then continue end
-        if not V.Character then continue end
-        local Head = V.Character.FindFirstChild(V.Character, "Head")
-        if not Head then continue end
-        local Pos, Vis = CurrentCamera.WorldToScreenPoint(CurrentCamera, Head.Position)
-        if not Vis then continue end
-        local MousePos, TheirPos = Vector2.new(Mouse.X, Mouse.Y), Vector2.new(Pos.X, Pos.Y)
-        local Dist = (TheirPos - MousePos).Magnitude
-        if Dist < MaxDist then
-            MaxDist = Dist
-            Closest = V
-        end
-    end
-    return Closest
-end
-local MT = getrawmetatable(game)
-local OldNC = MT.__namecall
-local OldIDX = MT.__index
-setreadonly(MT, false)
-MT.__namecall = newcclosure(function(self, ...)
-    local Args, Method = {...}, getnamecallmethod()
-    if Method == "FindPartOnRayWithIgnoreList" and not checkcaller() then
-        local CP = ClosestPlayer()
-        if CP and CP.Character and CP.Character.FindFirstChild(CP.Character, "Head") then
-            Args[1] = Ray.new(CurrentCamera.CFrame.Position, (CP.Character.Head.Position - CurrentCamera.CFrame.Position).Unit * 1000)
-            return OldNC(self, unpack(Args))
-        end
-    end
-    return OldNC(self, ...)
-end)
-MT.__index = newcclosure(function(self, K)
-    if K == "Clips" then
-        return workspace.Map
-    end
-    return OldIDX(self, K)
-end)
-setreadonly(MT, true)
 
-
-
-
-
-
-local function callback(Text)
- if Text == "Button1 text" then
-  print ("Answer")
-elseif Text == ("Button2 text") then
- print ("Answer2")
- end
+function isSameTeam(Player, Player2)
+	if wkspc.FFA.Value == true then
+		return false
+	else
+		return Player.TeamColor == Player2.TeamColor and true or false
+	end
 end
 
+function getClosestToMouse()
+	local closestdis = math.huge
+	local closestplr
+	local mspos = Mouse.hit.p
+	for i,v in pairs(Players:GetPlayers()) do
+		if v:DistanceFromCharacter(mspos) < closestdis and not isSameTeam(LocalPlayer, v) and v ~= LocalPlayer and v.Character and v.Character:FindFirstChild("Head") and v.Character:FindFirstChild("Spawned") then
+			closestplr = v
+			closestdis = v:DistanceFromCharacter(mspos)
+		end
+	end
+	if not closestplr then return LocalPlayer end
+	return closestplr
+end
+
+rawset(Client, "firebullet", 
+	newcclosure(function()
+		local Random
+		repeat
+			Random = getClosestToMouse()
+			until Random.Character and Random.Character:FindFirstChild("Head")
+		local Gun = ReplicatedStorage.Weapons:FindFirstChild(LocalPlayer.NRPBS.EquippedTool.Value);
+		local Distance = (LocalPlayer.Character.Head.Position - Random.Character.Head.Position).magnitude
+		
+		for i = 1, 5 do
+			ReplicatedStorage.Events.HitPart:FireServer(
+				Random.Character.Head,
+				Random.Character.Head.Position + Vector3.new(math.random(), math.random(), math.random()),
+				Gun.Name,
+				2,
+				Distance,
+				false,
+				true,
+				false,
+				1,
+				false,
+				Gun.FireRate.Value,
+				Gun.ReloadTime.Value,
+				Gun.Ammo.Value,
+				Gun.StoredAmmo.Value,
+				Gun.Bullets.Value,
+				Gun.EquipTime.Value,
+				Gun.RecoilControl.Value,
+				Gun.Auto.Value,
+				Gun['Speed%'].Value,
+				wkspc.DistributedTime.Value
+			)
+		end
+	end)
+)
 local NotificationBindable = Instance.new("BindableFunction")
 NotificationBindable.OnInvoke = callback
 
