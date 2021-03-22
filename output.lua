@@ -449,7 +449,7 @@ end)
     function x_walkspeed(key)
         if (key == "k") then
             if walkspeedenabled == false then
-                _G.WS = 80;
+                _G.WS = 50;
                 local Humanoid = game:GetService("Players").LocalPlayer.Character.Humanoid;
                 Humanoid:GetPropertyChangedSignal("WalkSpeed"):Connect(function()
                 Humanoid.WalkSpeed = _G.WS;
