@@ -331,7 +331,7 @@ elseif game.PlaceId == 286090429 then
 	function Message(text)
 	game.StarterGui:SetCore("SendNotification", {
 		Title = "HAY";
-		Text = "F To Open/Close İnf Jump";
+		Text = "Ctrl+Click = Delete";
 		Icon = "http://www.roblox.com/asset/?id=6456735913";
 		Duration = 3;
 	})	
@@ -341,35 +341,17 @@ elseif game.PlaceId == 286090429 then
     x.Text = "\240\159\147\162 "..text
 end
 Message("Hay!")
-	_G.infinjump = true
- 
-local Player = game:GetService("Players").LocalPlayer
-local Mouse = Player:GetMouse()
-Mouse.KeyDown:connect(function(k)
-if _G.infinjump then
-if k:byte() == 32 then
-Humanoid = game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
-Humanoid:ChangeState("Jumping")
-wait(0.1)
-Humanoid:ChangeState("Seated")
-end
-end
-end)
- 
-local Player = game:GetService("Players").LocalPlayer
-local Mouse = Player:GetMouse()
-Mouse.KeyDown:connect(function(k)
-k = k:lower()
-if k == "f" then
-if _G.infinjump == true then
-_G.infinjump = false
-else
-_G.infinjump = true
-end
-end
-end)
-end)
 
+local Plr = game:GetService("Players").LocalPlayer
+local Mouse = Plr:GetMouse()
+ 
+Mouse.Button1Down:connect(function()
+if not game:GetService("UserInputService"):IsKeyDown(Enum.KeyCode.LeftControl) then return end
+if not Mouse.Target then return end
+Mouse.Target:Destroy()
+end)
+end)	
+	
 	local Client
 for i,v in pairs(getgc(true)) do
 	if type(v) == "table" and rawget(v, "mode") then
