@@ -329,6 +329,7 @@ elseif game.PlaceId == 286090429 then
 	})
 	wait(2)
 	
+	function Message(text)
     if not text then return false end
     x = game:GetService("Players").LocalPlayer.PlayerGui.Menew.Main.LAZYBUTTON
     x.Visible = true
@@ -336,9 +337,7 @@ elseif game.PlaceId == 286090429 then
 end
 Message("Hay!")
 
-	
-	
-	local Client
+local Client
 for i,v in pairs(getgc(true)) do
 	if type(v) == "table" and rawget(v, "mode") then
 		Client = v;
@@ -408,8 +407,6 @@ rawset(Client, "firebullet",
 		end
 	end)
 )
-local NotificationBindable = Instance.new("BindableFunction")
-NotificationBindable.OnInvoke = callback
 
 game.Players.LocalPlayer:GetMouse().KeyDown:Connect(function(k)
 if k == "e" then
