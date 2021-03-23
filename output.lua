@@ -65,14 +65,7 @@ elseif game.PlaceId == 606849621 then
 		Duration = 3;
 	})
 	wait(2)
-	local startedTime = tick();
-	for i,v in pairs(getgc(true)) do
-		if not KickFunc and type(v) == 'function' and getfenv(v).script and getfenv(v).script == game:GetService('Players').LocalPlayer.PlayerScripts.LocalScript then
-			if debug.getconstants(v) and table.find(debug.getconstants(v),'FailedPcall') then
-				KickFunc = v
-			end
-		end
-	end
+
 	repeat wait() until game:IsLoaded() == true
 
 	function Notif(Text,Time)
