@@ -212,10 +212,32 @@ elseif game.PlaceId == 537413528 then
 		Duration = 3;
 	})
 	wait(2)
-	while wait(25) do
+
+
+
+	-- init
+	local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/zxciaz/VenyxUI/main/Reuploaded"))() --someone reuploaded it so I put it in place of the original back up so guy can get free credit.
+	local venyx = library.new("Build A Boat - Hay", 5013109572)
+
+	-- themes
+	local themes = {
+		Background = Color3.fromRGB(24, 24, 24),
+		Glow = Color3.fromRGB(0, 0, 0),
+		Accent = Color3.fromRGB(10, 10, 10),
+		LightContrast = Color3.fromRGB(20, 20, 20),
+		DarkContrast = Color3.fromRGB(14, 14, 14),  
+		TextColor = Color3.fromRGB(255, 255, 255)
+	}
+
+	-- first page
+	local page = venyx:addPage("Teleports", 5012544693)
+	local section1 = page:addSection("Teleports")
+
+
+	section1:addButton("End", function()
 		local plr = game:service"Players".LocalPlayer;
 		local tween_s = game:service"TweenService";
-		local info = TweenInfo.new(5,Enum.EasingStyle.Sine);
+		local info = TweenInfo.new(20,Enum.EasingStyle.Sine);
 		function tp(...)
 			local tic_k = tick();
 			local params = {...};
@@ -227,10 +249,10 @@ elseif game.PlaceId == 537413528 then
 			if not tween then return err end
 		end
 		tp(-49.0877953, 89.4546585, 1210.6311);
-		wait(3)
+		wait(20)
 		local plr = game:service"Players".LocalPlayer;
 		local tween_s = game:service"TweenService";
-		local info = TweenInfo.new(5,Enum.EasingStyle.Sine);
+		local info = TweenInfo.new(20,Enum.EasingStyle.Sine);
 		function tp(...)
 			local tic_k = tick();
 			local params = {...};
@@ -242,7 +264,7 @@ elseif game.PlaceId == 537413528 then
 			if not tween then return err end
 		end
 		tp(-45.5690842, 53.9622078, 8642.64258);
-		wait(5)
+		wait(20)
 		local plr = game:service"Players".LocalPlayer;
 		local tween_s = game:service"TweenService";
 		local info = TweenInfo.new(5,Enum.EasingStyle.Sine);
@@ -257,7 +279,7 @@ elseif game.PlaceId == 537413528 then
 			if not tween then return err end
 		end
 		tp(-47.8165436, -247.632278, 8697.99707);
-		wait(2)
+		wait(5)
 		local plr = game:service"Players".LocalPlayer;
 		local tween_s = game:service"TweenService";
 		local info = TweenInfo.new(5,Enum.EasingStyle.Sine);
@@ -272,7 +294,62 @@ elseif game.PlaceId == 537413528 then
 			if not tween then return err end
 		end
 		tp(-55.7251129, -342.845306, 9495.23438);
+	end)
+
+	venyx:Notify("Hay", "By PisiPapiks")
+
+	section1:addButton("Black Team", function()
+		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-585.921326, -13.1000061, -105.300163, 0.499959469, -0, -0.866048813, 0, 1, -0, 0.866048813, 0, 0.499959469)
+	end)
+
+	section1:addButton("Blue Team", function()
+		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(478.790375, -13.100008, 336.0867, -0.499959469, 0, 0.866048813, 0, 1, 0, -0.866048813, 0, -0.499959469)
+	end)
+
+	section1:addButton("Green Team", function()
+		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-581.89502, -13.1000061, 261.726135, 0.866007268, -0, -0.500031412, 0, 1, -0, 0.500031412, 0, 0.866007268)
+	end)
+
+	section1:addButton("Purple Team", function()
+		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(469.264008, -13.100008, 699.586792, -1, 0, 0, 0, 1, 0, 0, 0, -1)
+	end)
+
+	section1:addButton("Red Team", function()
+		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(459.737579, -13.100008, -17.9133034, -0.499959469, 0, 0.866048813, 0, 1, 0, -0.866048813, 0, -0.499959469)
+	end)
+
+	section1:addButton("White Team", function()
+		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-41.9447632, -13.100008, -612.997314, 0.707134247, -0, -0.707079291, 0, 1, -0, 0.707079291, 0, 0.707134247)
+	end)
+
+	section1:addButton("Yellow Team", function()
+		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-585.921326, -13.1000061, 604.699829, 0.499959469, -0, -0.866048813, 0, 1, -0, 0.866048813, 0, 0.499959469)
+	end)
+
+
+	--Sayfa3
+
+	local theme = venyx:addPage("Settings", 5012544693)
+	local Sets = theme:addSection("Main")
+	local colors = theme:addSection("Colors")
+
+	for theme, color in pairs(themes) do -- all in one theme changer, i know, im cool
+		colors:addColorPicker(theme, color, function(color3)
+			venyx:setTheme(theme, color3)
+		end)
 	end
+
+	Sets:addKeybind("Toggle Keybind", Enum.KeyCode.H, function()
+		print("Activated Keybind")
+		venyx:toggle()
+	end, function()
+		print("Changed Keybind")
+	end)
+
+
+	-- load
+	venyx:SelectPage(venyx.pages[1], true) -- no default for more freedom
+
 elseif game.PlaceId == 12996397 then
 	game.StarterGui:SetCore("SendNotification", {
 		Title = "HAY";
