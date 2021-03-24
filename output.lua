@@ -237,7 +237,7 @@ elseif game.PlaceId == 537413528 then
 	section1:addButton("End", function()
 		local plr = game:service"Players".LocalPlayer;
 		local tween_s = game:service"TweenService";
-		local info = TweenInfo.new(20,Enum.EasingStyle.Sine);
+		local info = TweenInfo.new(5,Enum.EasingStyle.Sine);
 		function tp(...)
 			local tic_k = tick();
 			local params = {...};
@@ -249,7 +249,7 @@ elseif game.PlaceId == 537413528 then
 			if not tween then return err end
 		end
 		tp(-49.0877953, 89.4546585, 1210.6311);
-		wait(20)
+		wait(5)
 		local plr = game:service"Players".LocalPlayer;
 		local tween_s = game:service"TweenService";
 		local info = TweenInfo.new(20,Enum.EasingStyle.Sine);
