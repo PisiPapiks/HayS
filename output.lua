@@ -1210,10 +1210,110 @@ end)
 	venyx:SelectPage(venyx.pages[1], true) -- no default for more freedom
 
 else
-	game.StarterGui:SetCore("SendNotification", {
-		Title = "HAY";
-		Text = "This Game İs Not Supported :(";
-		Icon = "http://www.roblox.com/asset/?id=6456735913";
-		Duration = 3;
-	})
+
+-- init
+local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/zxciaz/VenyxUI/main/Reuploaded"))() --someone reuploaded it so I put it in place of the original back up so guy can get free credit.
+local venyx = library.new("Universal - Hay", 5013109572)
+
+-- themes
+local themes = {
+Background = Color3.fromRGB(24, 24, 24),
+Glow = Color3.fromRGB(0, 0, 0),
+Accent = Color3.fromRGB(10, 10, 10),
+LightContrast = Color3.fromRGB(20, 20, 20),
+DarkContrast = Color3.fromRGB(14, 14, 14),  
+TextColor = Color3.fromRGB(255, 255, 255)
+}
+
+-- first page
+local page = venyx:addPage("Main", 5012544693)
+local section1 = page:addSection("LocalPlayer")
+
+section1:addButton("Noclip (E)", function()
+noclip = false
+game:GetService('RunService').Stepped:connect(function()
+if noclip then
+game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
+end
+end)
+plr = game.Players.LocalPlayer
+mouse = plr:GetMouse()
+mouse.KeyDown:connect(function(key)
+
+if key == "e" then
+noclip = not noclip
+game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
+end
+end)
+print('Loaded')
+print('Press "E" to noclip')
+end)
+
+section1:addButton("İnf Jump", function()
+game:GetService("UserInputService").JumpRequest:connect(function()
+wait()
+game:GetService"Players".LocalPlayer.Character:FindFirstChildOfClass'Humanoid':ChangeState("Jumping")
+end)
+end)
+
+section1:addButton("Double Jump", function()
+local UserInputService = game:GetService("UserInputService")
+local localPlayer = game.Players.LocalPlayer
+local character
+local humanoid
+local canDoubleJump = false
+local hasDoubleJumped = false
+local oldPower
+local TIME_BETWEEN_JUMPS = 0.2
+local DOUBLE_JUMP_POWER_MULTIPLIER = 2
+function onJumpRequest()
+    if not character or not humanoid or not character:IsDescendantOf(workspace) or
+    humanoid:GetState() == Enum.HumanoidStateType.Dead then
+        return
+    end
+ 
+    if canDoubleJump and not hasDoubleJumped then
+        hasDoubleJumped = true
+        humanoid.JumpPower = oldPower * DOUBLE_JUMP_POWER_MULTIPLIER
+        humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
+    end
+end
+local function characterAdded(newCharacter)
+    character = newCharacter
+    humanoid = newCharacter:WaitForChild("Humanoid")
+    hasDoubleJumped = false
+    canDoubleJump = false
+    oldPower = humanoid.JumpPower
+ 
+    humanoid.StateChanged:connect(function(old, new)
+        if new == Enum.HumanoidStateType.Landed then
+            canDoubleJump = false
+            hasDoubleJumped = false
+            humanoid.JumpPower = oldPower
+        elseif new == Enum.HumanoidStateType.Freefall then
+            wait(TIME_BETWEEN_JUMPS)
+            canDoubleJump = true
+        end
+    end)
+end
+if localPlayer.Character then
+    characterAdded(localPlayer.Character)
+end
+
+localPlayer.CharacterAdded:connect(characterAdded)
+UserInputService.JumpRequest:connect(onJumpRequest)
+
+end)
+
+section1:addButton("Jump", function()
+game:GetService"Players".LocalPlayer.Character:FindFirstChildOfClass'Humanoid':ChangeState("Jumping")
+end)
+
+section1:addSlider("Speed", 0, 0, 1000, function(value)
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = value
+end)
+
+
+-- load
+venyx:SelectPage(venyx.pages[1], true) -- no default for more freedom
 end
