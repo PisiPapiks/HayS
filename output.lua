@@ -190,6 +190,10 @@ elseif game.PlaceId == 263761432 then
 	end, function()
 		print("Changed Keybind")
 	end)
+	
+Sets:addButton("Kill Roblox", function()
+game:Shutdown()
+end)
 
 	-- load
 	venyx:SelectPage(venyx.pages[1], true) -- no default for more freedom	
@@ -345,6 +349,10 @@ elseif game.PlaceId == 537413528 then
 	end, function()
 		print("Changed Keybind")
 	end)
+	
+Sets:addButton("Kill Roblox", function()
+game:Shutdown()
+end)
 
 
 	-- load
@@ -449,6 +457,13 @@ elseif game.PlaceId == 286090429 then
 		Duration = 3;
 	})
 	wait(2)
+	function Message(text)
+    if not text then return false end
+    x = game:GetService("Players").LocalPlayer.PlayerGui.Menew.Main.LAZYBUTTON
+    x.Visible = true
+    x.Text = "\240\159\147\162 "..text
+end
+Message(" HAY!")
 -- init
 	local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/zxciaz/VenyxUI/main/Reuploaded"))() --someone reuploaded it so I put it in place of the original back up so guy can get free credit.
 	local venyx = library.new("Arsenal", 5013109572)
