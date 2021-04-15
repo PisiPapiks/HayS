@@ -1,16 +1,7 @@
 setclipboard("HAYMENHAY")
 
-
-local exploit = (syn.secure_call and "Synapse X") or (PROTOSMASHER_LOADED and "ProtoSmasher") or (SENTINEL_LOADED and "Sentinel") or (fireclient and "Calamari") or (is_sirhurt_closure and "SirHurt") or (KRNL_LOADED and "KRNL") or (shadow_env and "Shadow") or (IS_VIVA_LOADED and "VIVA") or (isvm and "Proxo") or (IS_COCO_LOADED and "COCO") or (unit and "UNIT.FUN") or (jit and "EasyExploits")
-
 local gnID = game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId)
 
-game.StarterGui:SetCore("SendNotification", {
-	Title = "Hay";
-	Text = "Exploit Detected:" .. exploit;
-	Icon = "http://www.roblox.com/asset/?id=6456735913";
-	Duration = 3;
-})
 if game.PlaceId == 142823291 then
 	game.StarterGui:SetCore("SendNotification", {
 		Title = "HAY";
@@ -217,121 +208,305 @@ elseif game.PlaceId == 537413528 then
 	})
 	wait(2)
 
+--Made by : https://v3rmillion.net/member.php?action=profile&uid=244024
+-- init
+local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/zxciaz/VenyxUI/main/Reuploaded"))() --someone reuploaded it so I put it in place of the original back up so guy can get free credit.
+local venyx = library.new("Build A Boat - Hay", 5013109572)
+
+-- themes
+local themes = {
+Background = Color3.fromRGB(24, 24, 24),
+Glow = Color3.fromRGB(0, 0, 0),
+Accent = Color3.fromRGB(10, 10, 10),
+LightContrast = Color3.fromRGB(20, 20, 20),
+DarkContrast = Color3.fromRGB(14, 14, 14),  
+TextColor = Color3.fromRGB(255, 255, 255)
+}
+
+local page = venyx:addPage("Main", 5012544693)
+local section4 = page:addSection("Main")
+
+section4:addButton("Buy All Tools", function()
+local args = {
+    [1] = "Painting Tool",
+    [2] = 1
+}
+workspace.ItemBoughtFromShop:InvokeServer(unpack(args))
+local args = {
+    [1] = "Binding Tool",
+    [2] = 1
+}
+workspace.ItemBoughtFromShop:InvokeServer(unpack(args))
+local args = {
+    [1] = "Property Tool",
+    [2] = 1
+}
+workspace.ItemBoughtFromShop:InvokeServer(unpack(args))
+local args = {
+    [1] = "Scaling Tool",
+    [2] = 1
+}
+workspace.ItemBoughtFromShop:InvokeServer(unpack(args))
+end)
+
+section4:addButton("Buy Common Chest", function()
+local args = {
+    [1] = "Common Chest",
+    [2] = 1
+}
+workspace.ItemBoughtFromShop:InvokeServer(unpack(args))
+end)
+
+section4:addButton("Buy UnCommon Chest", function()
+local args = {
+    [1] = "Uncommon Chest",
+    [2] = 1
+}
+workspace.ItemBoughtFromShop:InvokeServer(unpack(args))
+end)
+
+section4:addButton("Buy Rare Chest", function()
+local args = {
+    [1] = "Rare Chest",
+    [2] = 1
+}
+workspace.ItemBoughtFromShop:InvokeServer(unpack(args))
+end)
+
+section4:addButton("Buy Epic Chest", function()
+local args = {
+    [1] = "Epic Chest",
+    [2] = 1
+}
+workspace.ItemBoughtFromShop:InvokeServer(unpack(args))
+end)
+
+section4:addButton("Buy Legendary Chest", function()
+local args = {
+    [1] = "Legendary Chest",
+    [2] = 1
+}
+workspace.ItemBoughtFromShop:InvokeServer(unpack(args))
+end)
+
+section4:addButton("Get All Codes", function()
+local args = {
+    [1] = "=D"
+}
+workspace.CheckCodeFunction:InvokeServer(unpack(args))
+wait(1)
+local args = {
+    [1] = "=p"
+}
+workspace.CheckCodeFunction:InvokeServer(unpack(args))
+wait(1)
+local args = {
+    [1] = "hi"
+}
+workspace.CheckCodeFunction:InvokeServer(unpack(args))
+wait(1)
+local args = {
+    [1] = "squid army"
+}
+workspace.CheckCodeFunction:InvokeServer(unpack(args))
+wait(1)
+local args = {
+    [1] = "chillthrill709 was here"
+}
+workspace.CheckCodeFunction:InvokeServer(unpack(args))
+wait(1)
+local args = {
+    [1] = "Fuzzy Friend?"
+}
+workspace.CheckCodeFunction:InvokeServer(unpack(args))
+wait(1)
+local args = {
+    [1] = "Lurking Legend"
+}
+workspace.CheckCodeFunction:InvokeServer(unpack(args))
+wait(1)
+local args = {
+    [1] = "Be a Big F00t Print"
+}
+workspace.CheckCodeFunction:InvokeServer(unpack(args))
+end)
 
 
-	-- init
-	local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/zxciaz/VenyxUI/main/Reuploaded"))() --someone reuploaded it so I put it in place of the original back up so guy can get free credit.
-	local venyx = library.new("Build A Boat - Hay", 5013109572)
-
-	-- themes
-	local themes = {
-		Background = Color3.fromRGB(24, 24, 24),
-		Glow = Color3.fromRGB(0, 0, 0),
-		Accent = Color3.fromRGB(10, 10, 10),
-		LightContrast = Color3.fromRGB(20, 20, 20),
-		DarkContrast = Color3.fromRGB(14, 14, 14),  
-		TextColor = Color3.fromRGB(255, 255, 255)
-	}
-
-	-- first page
-	local page = venyx:addPage("Teleports", 5012544693)
-	local section1 = page:addSection("Teleports")
 
 
-	section1:addButton("End", function()
-		local plr = game:service"Players".LocalPlayer;
-		local tween_s = game:service"TweenService";
-		local info = TweenInfo.new(5,Enum.EasingStyle.Sine);
-		function tp(...)
-			local tic_k = tick();
-			local params = {...};
-			local cframe = CFrame.new(params[1],params[2],params[3]);
-			local tween,err = pcall(function()
-				local tween = tween_s:Create(plr.Character["HumanoidRootPart"],info,{CFrame=cframe});
-				tween:Play();
-			end)
-			if not tween then return err end
-		end
-		tp(-49.0877953, 89.4546585, 1210.6311);
-		wait(5)
-		local plr = game:service"Players".LocalPlayer;
-		local tween_s = game:service"TweenService";
-		local info = TweenInfo.new(20,Enum.EasingStyle.Sine);
-		function tp(...)
-			local tic_k = tick();
-			local params = {...};
-			local cframe = CFrame.new(params[1],params[2],params[3]);
-			local tween,err = pcall(function()
-				local tween = tween_s:Create(plr.Character["HumanoidRootPart"],info,{CFrame=cframe});
-				tween:Play();
-			end)
-			if not tween then return err end
-		end
-		tp(-45.5690842, 53.9622078, 8642.64258);
-		wait(20)
-		local plr = game:service"Players".LocalPlayer;
-		local tween_s = game:service"TweenService";
-		local info = TweenInfo.new(5,Enum.EasingStyle.Sine);
-		function tp(...)
-			local tic_k = tick();
-			local params = {...};
-			local cframe = CFrame.new(params[1],params[2],params[3]);
-			local tween,err = pcall(function()
-				local tween = tween_s:Create(plr.Character["HumanoidRootPart"],info,{CFrame=cframe});
-				tween:Play();
-			end)
-			if not tween then return err end
-		end
-		tp(-47.8165436, -247.632278, 8697.99707);
-		wait(5)
-		local plr = game:service"Players".LocalPlayer;
-		local tween_s = game:service"TweenService";
-		local info = TweenInfo.new(5,Enum.EasingStyle.Sine);
-		function tp(...)
-			local tic_k = tick();
-			local params = {...};
-			local cframe = CFrame.new(params[1],params[2],params[3]);
-			local tween,err = pcall(function()
-				local tween = tween_s:Create(plr.Character["HumanoidRootPart"],info,{CFrame=cframe});
-				tween:Play();
-			end)
-			if not tween then return err end
-		end
-		tp(-55.7251129, -342.845306, 9495.23438);
-	end)
+-- first paged
+local page = venyx:addPage("AutoFarm", 5012544693)
+local section1 = page:addSection("Main")
 
-	venyx:Notify("Hay", "By PisiPapiks")
-
-	section1:addButton("Black Team", function()
-		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-585.921326, -13.1000061, -105.300163, 0.499959469, -0, -0.866048813, 0, 1, -0, 0.866048813, 0, 0.499959469)
-	end)
-
-	section1:addButton("Blue Team", function()
-		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(478.790375, -13.100008, 336.0867, -0.499959469, 0, 0.866048813, 0, 1, 0, -0.866048813, 0, -0.499959469)
-	end)
-
-	section1:addButton("Green Team", function()
-		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-581.89502, -13.1000061, 261.726135, 0.866007268, -0, -0.500031412, 0, 1, -0, 0.500031412, 0, 0.866007268)
-	end)
-
-	section1:addButton("Purple Team", function()
-		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(469.264008, -13.100008, 699.586792, -1, 0, 0, 0, 1, 0, 0, 0, -1)
-	end)
-
-	section1:addButton("Red Team", function()
-		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(459.737579, -13.100008, -17.9133034, -0.499959469, 0, 0.866048813, 0, 1, 0, -0.866048813, 0, -0.499959469)
-	end)
-
-	section1:addButton("White Team", function()
-		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-41.9447632, -13.100008, -612.997314, 0.707134247, -0, -0.707079291, 0, 1, -0, 0.707079291, 0, 0.707134247)
-	end)
-
-	section1:addButton("Yellow Team", function()
-		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-585.921326, -13.1000061, 604.699829, 0.499959469, -0, -0.866048813, 0, 1, -0, 0.866048813, 0, 0.499959469)
-	end)
+section1:addButton("AutoFarm Once", function()
+wait(3)
+game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-142.677292, 109.114311, 736.056458))
+wait(1)
+local CFrameEnd = CFrame.new(-52.9965401, 79.506752, 8646.33984)
+local Time = 33
+local tween =  game:GetService("TweenService"):Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(Time), {CFrame = CFrameEnd})
+tween:Play()
+tween.Completed:Wait()
+game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-48.2867279, -358.622314, 8826.5))
+local CFrameEnd = CFrame.new(-55.4865074, -360.404236, 9488.46973) 
+local Time = 2 
+local tween =  game:GetService("TweenService"):Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(Time), {CFrame = CFrameEnd})
+tween:Play()
+tween.Completed:Wait() 
+game.workspace.Gravity = 196
+end)
 
 
-	--Sayfa3
+
+-- second page
+local page = venyx:addPage("Teleports", 5012544693)
+local section2 = page:addSection("Main")
+
+section2:addButton("Endland", function()
+game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-50.8009567, -360.406219, 9392.05957))
+end)
+
+section2:addButton("White Team", function()
+game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-48.5306664, -9.90198898, -470.319336))
+end)
+
+section2:addButton("Red Team", function()
+game.Players.LocalPlayer.Character:MoveTo(Vector3.new(359.766083, -9.90198898, -64.5269012))
+end)
+
+section2:addButton("Black Team", function()
+game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-468.962006, -9.90198898, -69.5107346))
+end)
+
+section2:addButton("Blue Team", function()
+game.Players.LocalPlayer.Character:MoveTo(Vector3.new(334.28476, -9.90198898, 300.911285))
+end)
+
+section2:addButton("Green Team", function()
+game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-469.260254, -9.91308308, 292.97879))
+end)
+
+section2:addButton("Purple Team", function()
+game.Players.LocalPlayer.Character:MoveTo(Vector3.new(364.005463, -9.90198898, 647.096863))
+end)
+
+section2:addButton("Yellow Team", function()
+game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-465.625946, -9.90198898, 640.451233))
+end)
+
+section2:addButton("Dead Void", function()
+game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-389835712, 389835232, -142812880))
+end)
+
+local page = venyx:addPage("LocalPlayer", 5012544693)
+local section3 = page:addSection("Main")
+
+section3:addSlider("WalkSpeed", 16, 16, 1000, function(value)
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = value
+end)
+
+section3:addSlider("JumpPower", 50, 50, 1000, function(value)
+game.Players.LocalPlayer.Character.Humanoid.JumpPower = value
+end)
+
+section3:addButton("Fly (Y)", function()
+local gogo1000 = 0
+local LP = game:service('Players').LocalPlayer
+local MOUSE = LP:GetMouse()
+ 
+MOUSE.KeyDown:connect(function(KEY)
+ if KEY:lower() == 'y' then
+    local LP = game:service('Players').LocalPlayer
+local MOUSE = LP:GetMouse()
+ 
+    gogo1000 = gogo1000 + 1
+    _G.FLYING = false
+ 
+local T = LP.Character.UpperTorso
+local CONTROL = {F = 0, B = 0, L = 0, R = 0}
+local lCONTROL = {F = 0, B = 0, L = 0, R = 0}
+local SPEED = 5
+ 
+ 
+ 
+local function FLY()
+    _G.FLYING = true
+    local BG = Instance.new('BodyGyro', T)
+    local BV = Instance.new('BodyVelocity', T)
+    BG.P = 9e4
+    BG.maxTorque = Vector3.new(9e9, 9e9, 9e9)
+    BG.cframe = T.CFrame
+    BV.velocity = Vector3.new(0, 0.1, 0)
+    BV.maxForce = Vector3.new(9e9, 9e9, 9e9)
+ 
+ 
+    spawn(function()
+      repeat wait()
+        LP.Character.Humanoid.PlatformStand = true
+        if CONTROL.L + CONTROL.R ~= 0 or CONTROL.F + CONTROL.B ~= 0 then
+          SPEED = 100
+        elseif not (CONTROL.L + CONTROL.R ~= 0 or CONTROL.F + CONTROL.B ~= 0) and SPEED ~= 0 then
+          SPEED = 0
+        end
+        if (CONTROL.L + CONTROL.R) ~= 0 or (CONTROL.F + CONTROL.B) ~= 0 then
+          BV.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (CONTROL.F + CONTROL.B)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(CONTROL.L + CONTROL.R, (CONTROL.F + CONTROL.B) * 0.2, 0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p)) * SPEED
+          lCONTROL = {F = CONTROL.F, B = CONTROL.B, L = CONTROL.L, R = CONTROL.R}
+        elseif (CONTROL.L + CONTROL.R) == 0 and (CONTROL.F + CONTROL.B) == 0 and SPEED ~= 0 then
+          BV.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (lCONTROL.F + lCONTROL.B)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(lCONTROL.L + lCONTROL.R, (lCONTROL.F + lCONTROL.B) * 0.2, 0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p)) * SPEED
+        else
+          BV.velocity = Vector3.new(0, 0.1, 0)
+        end
+        BG.cframe = game.Workspace.CurrentCamera.CoordinateFrame
+      until not _G.FLYING
+      CONTROL = {F = 0, B = 0, L = 0, R = 0}
+      lCONTROL = {F = 0, B = 0, L = 0, R = 0}
+      SPEED = 0
+      BG:destroy()
+      BV:destroy()
+      LP.Character.Humanoid.PlatformStand = false
+    end)
+  end
+ 
+  MOUSE.KeyDown:connect(function(KEY)
+    if KEY:lower() == 'w' then
+      CONTROL.F = 1
+    elseif KEY:lower() == 's' then
+      CONTROL.B = -1
+    elseif KEY:lower() == 'a' then
+      CONTROL.L = -1 
+    elseif KEY:lower() == 'd' then 
+      CONTROL.R = 1
+    end
+  end)
+ 
+  MOUSE.KeyUp:connect(function(KEY)
+    if KEY:lower() == 'w' then
+      CONTROL.F = 0
+    elseif KEY:lower() == 's' then
+      CONTROL.B = 0
+    elseif KEY:lower() == 'a' then
+      CONTROL.L = 0
+    elseif KEY:lower() == 'd' then
+      CONTROL.R = 0
+    end
+  end)
+ 
+ 
+ 
+ 
+  FLY()
+ 
+    if gogo1000 == 2 then
+    _G.FLYING = false
+    gogo1000 = 0
+ 
+    end
+ 
+ 
+ 
+end
+end)
+end)
 
 	local theme = venyx:addPage("Settings", 5012544693)
 	local Sets = theme:addSection("Main")
@@ -354,9 +529,8 @@ Sets:addButton("Kill Roblox", function()
 game:Shutdown()
 end)
 
-
-	-- load
-	venyx:SelectPage(venyx.pages[1], true) -- no default for more freedom
+-- load
+venyx:SelectPage(venyx.pages[1], true) -- no default for more freedom
 
 elseif game.PlaceId == 12996397 then
 	game.StarterGui:SetCore("SendNotification", {
